@@ -5,6 +5,6 @@ A simple prototype of a code environment of pyodide. It is a simple wrapper arou
 Run the following command in the root directory of the project:
 ```python server.py```
 
-Then open the following link in your browser: http://localhost:8000/pyodide2.html
+Then open the following link in your browser: http://localhost:8000/
 
 
