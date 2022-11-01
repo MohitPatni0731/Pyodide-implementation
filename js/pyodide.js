@@ -1,4 +1,4 @@
-import { asyncRun } from "./py-worker.js";
+import { asyncRun, interruptExecution } from "./py-worker.js";
 
 function addToOutput(s) {
     output.value += `${s}\n`
@@ -7,6 +7,9 @@ function addToOutput(s) {
 
 async function evaluatePython() {
     addToOutput(`>>>${code.value}`)
+    document.getElementById('run').disabled = true;
+    document.getElementById('run').innerText = 'Running...';
+    document.getElementById('stop').disabled = false;
 
     try {
         // await pyodide.loadPackagesFromImports(code.value, addToOutput, addToOutput)
@@ -24,12 +27,18 @@ async function evaluatePython() {
         );
         addToOutput(`${e.message}`)
     }
+
+    document.getElementById('run').disabled = false;
+    document.getElementById('run').innerText = 'Run';
+    document.getElementById('stop').disabled = true;
 }
 
 (async () => {
     const output = document.getElementById('output');
     const code = document.getElementById("code");
     const run = document.getElementById("run");
+    const stop = document.getElementById("stop");
     output.value = 'Initializing...\n';
-    run.addEventListener("click", evaluatePython);
+    run.addEventListener("click", evaluatePython);    
+    stop.addEventListener("click", interruptExecution);
 })();
