@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <title>Pyodide example</title>
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script> -->
 </head>
 
 <body>
@@ -10,7 +10,7 @@
     <div id="simple-example">        
         <div>You can execute any Python code. Just enter something in the box above and click the button. </div>
         <br />
-        <textarea id='code' rows='9' style='width: 100%;' disabled>
+        <textarea id='code' rows='9' style='width: 100%;'>
 try:
     x = 1
 except:
@@ -21,44 +21,12 @@ finally:
     print('We always do this')
             </textarea>
             <br />
-        <button id='run' onclick='evaluatePython()'>Run</button>
+        <button id='run'>Run</button>
         <br />
         <br />
         Output:
         <textarea id='output' style='width: 100%;' rows='3' disabled></textarea>
-
-        <script type='text/javascript'>
-            const output = document.getElementById("output")
-            const code = document.getElementById("code")
-
-            function addToOutput(s) {
-                output.value += `${s}\n`
-                output.scrollTop = output.scrollHeight
-            }
-
-            async function evaluatePython() {
-                addToOutput(`>>>${code.value}`)
-
-                try {
-                    await pyodide.loadPackagesFromImports(code.value, addToOutput, addToOutput)
-                    let result = await pyodide.runPythonAsync(code.value)
-                    addToOutput(`${result}`)
-                }
-                catch (e) {
-                    addToOutput(`${e}`)
-                }
-                code.value = ''
-            }
-
-            (async () => {
-                output.value = 'Initializing...\n'
-
-                
-                window.pyodide = await loadPyodide({ stdout: addToOutput, stderr: addToOutput })
-                output.value += 'Ready!\n'
-
-            })();
-        </script>
     </div>
+    <script type="module" src="js/pyodide.js"></script>
 </body>
 </html>
