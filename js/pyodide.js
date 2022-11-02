@@ -13,19 +13,19 @@ async function evaluatePython() {
 
     try {
         // await pyodide.loadPackagesFromImports(code.value, addToOutput, addToOutput)
+        let resolved=false;
         const promise = asyncRun(code.value, {})
-        console.log(promise)
+        promise.then(() => resolved=true);
         // Check if resolved every 100ms for 5s
         for (let i = 0; i < 50; i++) {
             await new Promise(resolve => setTimeout(resolve, 100));
             console.log('Checking if promise is resolved');
-            if (promise.isFulfilled) {
+            if (resolved) {
                 console.log('Promise is resolved');
                 break;
             }
         }
-        if (promise.isFulfilled){
-        }else{
+        if (!resolved){
             addToOutput('Execution timed out. Interrupting...');
             interruptExecution();
         }
