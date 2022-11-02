@@ -1,4 +1,4 @@
-import { asyncRun } from "./py-worker.js";
+import { asyncRun, interruptExecution } from "./py-worker.js";
 
 function addToOutput(s) {
     output.value += `${s}\n`
@@ -7,10 +7,29 @@ function addToOutput(s) {
 
 async function evaluatePython() {
     addToOutput(`>>>${code.value}`)
+    document.getElementById('run').disabled = true;
+    document.getElementById('run').innerText = 'Running...';
+    document.getElementById('stop').disabled = false;
 
     try {
         // await pyodide.loadPackagesFromImports(code.value, addToOutput, addToOutput)
-        const {result, error} = await asyncRun(code.value, {})
+        const promise = asyncRun(code.value, {})
+        console.log(promise)
+        // Check if resolved every 100ms for 5s
+        for (let i = 0; i < 50; i++) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+            console.log('Checking if promise is resolved');
+            if (promise.isFulfilled) {
+                console.log('Promise is resolved');
+                break;
+            }
+        }
+        if (promise.isFulfilled){
+        }else{
+            addToOutput('Execution timed out. Interrupting...');
+            interruptExecution();
+        }
+        const {result, error} = await promise;
         if (error) {
             // console.log("pyodideWorker error: ", error);
             addToOutput(`${error}`)
@@ -24,12 +43,18 @@ async function evaluatePython() {
         );
         addToOutput(`${e.message}`)
     }
+
+    document.getElementById('run').disabled = false;
+    document.getElementById('run').innerText = 'Run';
+    document.getElementById('stop').disabled = true;
 }
 
 (async () => {
     const output = document.getElementById('output');
     const code = document.getElementById("code");
     const run = document.getElementById("run");
+    const stop = document.getElementById("stop");
     output.value = 'Initializing...\n';
-    run.addEventListener("click", evaluatePython);
+    run.addEventListener("click", evaluatePython);    
+    stop.addEventListener("click", interruptExecution);
 })();

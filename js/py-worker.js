@@ -1,9 +1,15 @@
 const pyodideWorker = new Worker("./js/webworker.js");
-
 const callbacks = {};
 
+let interruptBuffer = new Uint8Array(new SharedArrayBuffer(1));
+pyodideWorker.postMessage({ cmd: "setInterruptBuffer", interruptBuffer });
+
+function interruptExecution() {
+  // 2 stands for SIGINT.
+  interruptBuffer[0] = 2;
+}
+
 pyodideWorker.onmessage = (event) => {
-    
   const { id, loaded, ...data } = event.data;
   if(loaded){
     const output = document.getElementById('output');
@@ -16,6 +22,7 @@ pyodideWorker.onmessage = (event) => {
 };
 
 const asyncRun = (() => {
+  interruptBuffer[0] = 0;
   let id = 0; // identify a Promise
   return (script, context) => {
     // the id could be generated more carefully
@@ -31,4 +38,4 @@ const asyncRun = (() => {
   };
 })();
 
-export {asyncRun}
+export {asyncRun, interruptExecution}
