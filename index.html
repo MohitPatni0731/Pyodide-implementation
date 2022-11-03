@@ -10,16 +10,8 @@
     <div id="simple-example">        
         <div>You can execute any Python code. Just enter something in the box above and click the button. </div>
         <br />
-        <textarea id='code' rows='9' style='width: 100%;'>
-try:
-    x = 1
-except:
-    print('Failed to set x')
-else:
-    print('No exception occured')
-finally:
-    print('We always do this')
-            </textarea>
+        <textarea id='code' rows='9' style='width: 100%;'>  
+        </textarea>
             <br />
         <button id='run'>Run</button>
         <button id='stop' disabled>Stop</button>
@@ -28,6 +20,7 @@ finally:
         Output:
         <textarea id='output' style='width: 100%;' rows='3' disabled></textarea>
     </div>
+    <script src="js/editor.js"></script>
     <script type="module" src="js/pyodide.js"></script>
 </body>
 </html>
