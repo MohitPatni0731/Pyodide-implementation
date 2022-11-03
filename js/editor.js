@@ -12,8 +12,28 @@ let disableEditingRange = [
 
 code.value = replaceTabWithSpaces(defaultCode);
 
+document.addEventListener("select", (event) => {
+  console.log(code.selectionStart, code.selectionEnd);
+  // If selection is not empty
+  if (code.selectionStart !== code.selectionEnd) {
+    // TODO: Check if any part of selection is in disableEditingRange
+    code.blur();
+  }
+});
+
 // Add key down event listener
 code.addEventListener("keydown", function (e) {
+  // Disable selecting with shift key
+  if (
+    e.shiftKey &&
+    (e.key === "ArrowUp" ||
+      e.key === "ArrowDown" ||
+      e.key === "ArrowLeft" ||
+      e.key === "ArrowRight")
+  ) {
+    e.preventDefault();
+  }
+
   // Disable editing
   const line = this.value.substr(0, this.selectionStart).split("\n").length;
   for (let i = 0; i < disableEditingRange.length; i++) {
