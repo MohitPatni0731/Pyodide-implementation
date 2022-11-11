@@ -1,0 +1,60 @@
+{
+    "version": 2.0,
+    "questions": [
+        {
+            "question": "What is the difference between Error and Exceptions?",
+            "answers": {
+                "a": "Errors can be handled by the programmer, whereas exceptions cannot be handled",
+                "b": "Exceptions can be handled by the programmer, errors cannot be handled",
+                "c": "Errors can be handled using try except block, whereas exceptions cannot be handled using try except block",
+                "d": "None of the above"
+            },
+            "correctAnswer": "b",
+            "difficulty": "beginner"
+        },
+        {
+            "question": "Which of the following scenario holds true with respect to the finally block execution",
+            "answers": {
+                "a": "Finally block always gets executed irrespective of the errors and exceptions",
+                "b": "Finally block gets executed only when there are no errors in your program",
+                "c": "Finally block gets executed only when there is an exception in your program",
+                "d": "None of the above"
+            },
+            "correctAnswer": "a",
+            "difficulty": "advanced"
+        },
+        {
+            "question": "Which of the following error occurs when the user enters an invalid input?",
+            "answers": {
+                "a": "Syntax Error",
+                "b": "Logical Error",
+                "c": "RunTime Error",
+                "d": "None of the above"
+            },
+            "correctAnswer": "c",
+            "difficulty": "intermediate"
+        },
+        {
+            "question": "When your code gets compiled successfully, and gives you the output, but the output which you have obtained is an incorrect one. This scenario is an example of?",
+            "answers": {
+                "a": "Runtime Error",
+                "b": "Logical Error",
+                "c": "Syntax Error",
+                "d": "None of the above"
+            },
+            "correctAnswer": "b",
+            "difficulty": "intermediate"
+        },
+        {
+            "question": "When the programmer is trying to import modules in his program which he have bever created is an example of which error?",
+            "answers": {
+                "a": "KeyError",
+                "b": "TypeError",
+                "c": "IndexError",
+                "d": "ModuleNotFoundError"
+            },
+            "correctAnswer": "d",
+            "difficulty": "advanced"
+        }
+    ]
+}

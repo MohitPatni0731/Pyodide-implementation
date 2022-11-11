@@ -1,0 +1,154 @@
+/* You CSS goes in here */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: auto;
+    white-space: nowrap;
+}
+.container{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3rem;
+}
+.box{
+    width: 28rem;
+    height: 28rem;
+    border: 1.5px solid #000;
+    border-radius: 10px;
+    position: relative;
+}
+.exception{
+    display: inline;
+    margin: 0;
+}
+#submit{
+    height: 2.25rem;
+    width: 5.25rem;
+    border-radius: 5px;
+    margin: 0 auto;
+    display: block;
+    font-size: medium;
+}
+#exception-name{
+    display: block;
+    margin: 0 auto;
+    margin-top: 2.5rem;
+    width: 10rem;
+    height: 2rem;
+}
+.header{
+    background-color: #eee;
+    padding: 15px 0;
+    margin: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+}
+.key-error, .zero-division-error, .index-error{
+    display: none;
+}
+.thin{
+    width: 20rem;
+}
+
+.answer-index, .answer-value, .answer-key{
+    margin: 10px 3px;
+    text-align: center;
+}
+.pivot {
+    position: absolute;
+    width: inherit;
+    bottom: 0;
+}
+.ball {
+    background: #fcba03;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    border-radius: 100%;
+}
+.mouth-happy {
+    position: absolute;
+    background-color: black;
+    width: 21px;
+    height: 9px;
+    border-radius: 7px 7px 100px 100px;
+    top: 25px;
+    left: 10px;
+} 
+.mouth-ok {
+    position: absolute;
+    background-color: black;
+    width: 21px;
+    height: 5px;
+    border-radius: 7px 7px 7px 7px;
+    top: 25px;
+    left: 10px;
+}
+.mouth-shock {
+    position: absolute;
+    background-color: black;
+    width: 21px;
+    height: 12px;
+    border-radius: 7px 7px 7px 7px;
+    top: 25px;
+    left: 10px;
+}
+.eyes {
+    width: 27px;
+    height: 10px;
+    position: absolute;
+    left: 8px;
+    top: 9px;
+}
+.right, .left {
+    background-color: #4f2103;
+    width: 5px;
+    height: 6px;
+    border-radius: 50px;
+    position: absolute;
+    top: 2px;
+}
+.right {
+    right: 2px;
+}
+
+.code {
+    color: red;
+}
+
+.bucket {
+    background: #000000;
+    width: 6.5rem;
+    height: 3.25rem;
+    position: absolute;
+    bottom: -3rem;
+    right: -1rem;
+    border-radius: .2rem .2rem 2rem 2rem;
+    border-bottom: 0.3rem solid rgb(90, 85, 85);
+    opacity: 0.5;
+}
+
+.id3 {
+    background: #0d05ec;
+    translate: -19rem;
+}
+.id2 {
+    background: #05ec0d;
+    translate: -11rem;
+}
+.id1 {
+    background: #ec0505;
+    translate: -3rem;
+}
+
+.i3{
+    translate: -19rem;
+}
+.i2{
+    translate: -11rem;
+}
+.i1{
+    translate: -3rem;
+}
