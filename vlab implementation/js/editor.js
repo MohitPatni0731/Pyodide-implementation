@@ -14,9 +14,9 @@ const defaultCode =
 code.value = replaceTabWithSpaces(defaultCode);
 
 const editor = CodeMirror.fromTextArea(code, {
-  lineNumbers: true,
+  lineNumbers: false,
   mode: "python",
-  theme: "material",
+  lineWrapping: false,
 });
 
 document.addEventListener("select", (event) => {
