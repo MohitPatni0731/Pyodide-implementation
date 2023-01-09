@@ -18,3 +18,4 @@ class MyHTTPRequestHandler(server.SimpleHTTPRequestHandler):
 
 if __name__ == '__main__':
     server.test(HandlerClass=MyHTTPRequestHandler)
+
