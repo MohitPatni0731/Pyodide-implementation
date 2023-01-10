@@ -15,7 +15,7 @@ code.value = defaultCode;
 
 const editor = CodeMirror.fromTextArea(code, {
   mode: "python",
-  lineNumbers: true,
+  lineNumbers: false,
   indentWithTabs: true,
   autofocus: true,
   tabSize: 2,
