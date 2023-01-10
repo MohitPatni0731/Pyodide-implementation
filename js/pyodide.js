@@ -5,6 +5,7 @@ function addToOutput(s) {
     output.scrollTop = output.scrollHeight
 }
 
+
 async function evaluatePython() {
     addToOutput(`>>>${code.value}`)
     document.getElementById('run').disabled = true;
