@@ -19,7 +19,16 @@ const editor = CodeMirror.fromTextArea(code, {
   indentWithTabs: true,
   autofocus: true,
   tabSize: 2,
+  //readOnly: 'nocursor'
 });
+
+var readOnlyLines = [0,1,2,4,5,6,7,8];
+                      
+editor.on('beforeChange',function(cm,change) {
+  if ( ~readOnlyLines.indexOf(change.from.line) ) {
+    change.cancel();
+  }
+ });
 
 // Editor on change update code.value
 editor.on("change", (cm, change) => {
